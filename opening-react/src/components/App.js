@@ -2,6 +2,7 @@ import React from "react"
 // import Header from "./Header"
 // import List from "./List"
 import Button from "./Button";
+import "../style/App.css"
 class App extends React.Component {
     // merupakan object yg menampung properti dari data yg ingin ditampilkan di komponen
     // state = {
@@ -12,16 +13,24 @@ class App extends React.Component {
 
     // }
     state = {
-        name: "pppppp"
+        name: "pppppp",
+        text: "",
+         book: "Bumi Manusia",
+        author: "Pramoedya Ananta Toer"
     }
-    change = () => {
+    click = () => {
         this.setState({
-            name: "Apan yak!?"
+            name: this.state.text
+        })
+        this.setState({
+            text: ""
         })
     }
-    state = {
-        book: "Bumi Manusia",
-        author: "Pramoedya Ananta Toer"
+
+    change = e => {
+        this.setState({
+            text: e.target.value
+        })
     }
     render(){
         return(
@@ -44,8 +53,9 @@ class App extends React.Component {
                     <List book={this.state.book} author={this.state.author}/>
                 </div> */}
                 <p>{this.state.name}</p>
+                <input type="text" value={this.state.text} style={{padding:"10px"}} onChange={this.change} className="box"/>
                 {/* <Button color="merah" onClick={this.change}/> */}
-                <button onClick={this.change}>dnwio</button>
+                <button onClick={this.click}>Click</button>
             </div>
         )
     }
