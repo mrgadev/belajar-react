@@ -1,0 +1,79 @@
+@font-face {
+  font-family: "Sora Bold";
+  src: local("Sora-Bold"),
+  url("./fonts/Sora-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Sora Extra Bold";
+  src: local("Sora-ExtraBold"),
+  url("./fonts/Sora-ExtraBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Sora Extra Light";
+  src: local("Sora-ExtraLight"),
+  url("./fonts/Sora-ExtraLight.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Sora Light";
+  src: local("Sora-Light"),
+  url("./fonts/Sora-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Sora Medium";
+  src: local("Sora-Medium"),
+  url("./fonts/Sora-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Sora Regular";
+  src: local("Sora-Regular"),
+  url("./fonts/Sora-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Sora Semibold";
+  src: local("Sora-SemiBold"),
+  url("./fonts/Sora-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Sora Thin";
+  src: local("Sora-Thin"),
+  url("./fonts/Sora-Thin.ttf") format("truetype");
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
