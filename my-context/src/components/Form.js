@@ -1,5 +1,6 @@
 import React, { use, useContext, useState } from "react";
 import { DataContext } from "../context/DataContext";
+import { add } from "../action/listAction";
 const Form = () => {
     // console.log("lists ", lists)
     const [text, setText] = useState("")
@@ -9,11 +10,8 @@ const Form = () => {
     }
     const submit = (e) => {
         e.preventDefault()
-        const action = {
-            type: "ADD",
-            payload: text
-        }
-        dispatch(action)
+        
+        dispatch(add(text))
         setText("")
     }
     return(

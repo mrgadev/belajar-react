@@ -1,0 +1,21 @@
+.header {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.301);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border: 1px solid rgba(0, 0, 0, 0.176);
+
+    h2 {
+        font-family: 'Plus Jakarta Semi Bold';
+    }
+
+    p {
+        font-family: 'Plus Jakarta Medium';
+    }
+}

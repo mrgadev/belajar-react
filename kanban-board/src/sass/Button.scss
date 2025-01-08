@@ -1,0 +1,50 @@
+.add-button {
+    margin-top: 1rem;
+    width: 10rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    cursor: pointer;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    font-family: 'Plus Jakarta Medium';
+}
+
+.form-box {
+    height: 6rem;
+    min-width: 10rem;
+    
+    background: #ebecf1;
+    padding: 1rem 0.5rem; 
+    margin-top: 1rem;
+    .text-area {
+        width: 96%;
+        resize:none;
+        padding: 0.5rem 1rem;
+        border: none;
+        margin-bottom: 0.3rem;
+        border-radius: 3px;
+        &:focus {
+            outline: none;
+        }
+    }
+    .button-box {
+        display: flex;
+        align-items: center;
+        .add {
+            background: #223b75;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+            color: #fff;
+            &:focus {
+                outline: none;
+            }
+        }
+        .close {
+            width: 1.2rem;
+            border: none;
+        }
+    }
+    
+}
