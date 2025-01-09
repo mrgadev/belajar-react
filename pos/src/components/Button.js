@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const MyButton = styled.button`
-    height: 1.7rem;
-    width: 6rem;
     border: none;
     padding: 0.2rem 0.5rem;
     color: #fff;
@@ -15,10 +13,18 @@ const MyButton = styled.button`
 `
 
 const PrimaryButton = styled(MyButton)`
-    background: ${props => props.theme.primary}
+    background: ${props => props.theme.textPrimary};
+    border-radius: 25px;
+    padding: 1rem;
+    font-family: "Sora Light";
 `
 const WarningButton = styled(MyButton)`
-    background: ${props => props.theme.tertiary}
+    background: ${props => props.theme.bgPrimary};
+    color: ${props => props.theme.textPrimary};
+    border-radius: 25px;
+    padding: 1rem;
+    font-family: "Sora Medium";
+    border: 2px solid ${props => props.theme.textPrimary};
 `
 
 const Button = ({primary, action, text}) => {

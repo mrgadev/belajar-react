@@ -1,35 +1,83 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
-const Menu = styled.li`
-    height: 2rem;
-    display: flex;
-    align-items: center;
-    padding-left: 0.3rem;
-    position: relative;
-    color: ${props => props.theme.grey};
-    cursor: pointer;
-    &:not(:last-child) {
-        margin-bottom: 0.5rem;
-    }
-    &:nth-child(2) {
-        background: ${props => props.theme.primary};
-        color: ${props => props.theme.light}
-    }
-`
+const MenuWrapper = styled.div`
+  padding: 1rem;
+`;
+
+const MenuItem = styled.div`
+  padding: 1rem;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  background: ${(props) =>
+    props.active ? props.theme.bgPrimary : "transparent"};
+  color: ${(props) => (props.active ? props.theme.light : props.theme.dark)};
+  border-radius: 25px;
+  border: 2px solid ${(props) => props.active ? props.theme.textPrimary : "transparent"};
+  color: ${(props) => props.theme.textPrimary};
+  transition: all 0.2s;
+
+  &:hover {
+    background: ${(props) => props.theme.primary};
+    color: ${(props) => props.theme.light};
+  }
+`;
 
 const ListMenu = () => {
-    const [menu] = useState(["Favorite", "Makanan", "Minuman", "Cemilan"])
-    return(
-        <ul>
-            {menu.map((item, index) => 
-                <Menu key={index}>
-                    {item}
-                </Menu>
-            )}
-            
-        </ul>
-    )
-}
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.products);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeCategory, setActiveCategory] = useState("All");
 
-export default ListMenu
+  // Get unique categories from products
+  const categories = [
+    "All",
+    ...new Set(products.map((product) => product.category)),
+  ];
+
+  const handleCategoryClick = (category) => {
+    setActiveCategory(category);
+    dispatch({
+      type: "FILTER_PRODUCTS",
+      payload: {
+        category: category === "All" ? null : category,
+        searchTerm,
+      },
+    });
+  };
+
+  // const handleSearch = (e) => {
+  //   const value = e.target.value;
+  //   setSearchTerm(value);
+  //   dispatch({
+  //     type: "FILTER_PRODUCTS",
+  //     payload: {
+  //       category: activeCategory === "All" ? null : activeCategory,
+  //       searchTerm: value,
+  //     },
+  //   });
+  // };
+
+  return (
+    <MenuWrapper>
+      {/* <SearchInput
+        type="text"
+        placeholder="Search items..."
+        value={searchTerm}
+        onChange={handleSearch}
+      /> */}
+      {categories.map((category) => (
+        <MenuItem
+          key={category}
+          active={activeCategory === category}
+          onClick={() => handleCategoryClick(category)}
+        >
+          {category}
+        </MenuItem>
+      ))}
+    </MenuWrapper>
+  );
+};
+
+export default ListMenu;

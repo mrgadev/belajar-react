@@ -6,8 +6,8 @@ const Head = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: "Sora Semibold";
-    background: ${props => props.theme.primary};
+    font-family: "Sora Regular";
+    background: ${props => props.theme.textPrimary};
     color: ${props => props.theme.light};
 `
 

@@ -26,7 +26,7 @@ const Container = styled.div`
 
 const MenuContainer = styled.div`
   width: 15%;
-  padding: 0.5rem 0;
+  padding: 2rem 0;
   padding-right: 0.5rem;
 `
 
@@ -36,7 +36,7 @@ const ProductContainer = styled.div`
   background: ${props => props.theme.light};
   border-left: 1px solid #f7f7f7;
   border-right: 1px solid #f7f7f7;
-  padding: 0.5rem 0;
+  padding: 3rem 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -44,12 +44,13 @@ const ProductContainer = styled.div`
 
 const CartContainer = styled.div`
   width: 25%;
-  padding: 0.5rem;
+  margin: 3rem 1rem;
 
 `
 
 const App = () => {
-  const products = useSelector(state => state.products.products)
+  const products = useSelector((state) => state.products.filteredProducts)
+  console.log(products)
   const carts = useSelector(state => state.products.carts)
   return(
     <ThemeProvider theme={theme}>
@@ -64,11 +65,11 @@ const App = () => {
           )}
         </ProductContainer>
         <CartContainer>
-          <p>{carts ? `${carts.length} item in cart` : `0 item in cart`}</p>
-          {carts.map(item => 
-            <CartItem key={item.id} item={item}/>
-          )}
-          <CalculateBox></CalculateBox>
+          <p></p>
+          
+          <CalculateBox>
+            
+          </CalculateBox>
         </CartContainer>
       </Container>
     </ThemeProvider>

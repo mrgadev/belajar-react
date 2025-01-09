@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import { resetCart } from "../store/actions/product";
+import CartItem from "./CartItem";
 import styled from "styled-components";
 import Button from "./Button";
 
 const Box = styled.div`
-    position: fixed;
-    bottom: 0;
     width: 24rem;
-    height: 9rem;
-    box-shadow: 1px 1px 10px 1px #ccc;
-    padding: 0.4rem;
+
+    padding: 1rem;
+    margin-top: 2rem;
     margin-left: -0.4rem;
+    border-radius: 10px;
+    border: 2px solid ${props => props.theme.textPrimary};
 `
 const Total = styled.div`
     display: flex;
@@ -25,7 +26,6 @@ const Pay = styled.div`
     input[type=number] {
         border: none;
         border-bottom: 1px solid #333;
-        font-weight: bold;
         text-align: right
         &:focus {
             outline:none;
@@ -44,7 +44,7 @@ const Change = styled.div`
 
 const BtnBox = styled.div`
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
 `
 
 const CalculateBox = () => {
@@ -68,6 +68,9 @@ const CalculateBox = () => {
     }
     return(
         <Box>
+            {carts.map(item => 
+            <CartItem key={item.id} item={item}/>
+            )}
             <Total>
                 <h4>Total</h4>
                 <p>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(total)}</p>

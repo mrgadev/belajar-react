@@ -1,23 +1,24 @@
 .board-title {
-    height: 2rem;
-    width: 50%;
-    margin: 0.5rem 0;
-    input {
-        height: 100%;
-        width: 100%;
-        border: none;
-        display: block;
-        font-size: 1.17rem;
-        font-family: 'Plus Jakarta Medium';
-        background: transparent;
-        padding: 0.5rem;
-        &::focus {
-            outline: none;
-            border: none;
-        }
+    .board-title-input {
+      width: 100%;
+      padding: 4px 8px;
+      border: 2px solid #0079bf;
+      border-radius: 3px;
+      font-size: inherit;
+      font-weight: bold;
+      
+      &:focus {
+        outline: none;
+      }
     }
+    
     h3 {
-        height: 100%;
-
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 3px;
+      
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
     }
-}
+  }

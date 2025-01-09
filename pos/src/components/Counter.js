@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const CounterStyle = styled.div`
     width: 1rem;
-    background: ${props => props.theme.secondary};
+    background: ${props => props.theme.textPrimary};
     color: #fff;
     height: 1rem;
     border-radius: 100px;

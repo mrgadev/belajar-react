@@ -10,35 +10,52 @@ const Card = styled.div`
 `
 const CardImg = styled.img`
     width: 100%;
-    height: 50%;
+    height: 75%;
 
 `
-const NamePrice = styled.div`
+const ProductNameContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 1rem;
+    gap: 5px;
+`
 
+const ProductName = styled.p`
+    font-size: 1.1rem;
+    color: #333;
+`
+const ProductPrice = styled.p`
+    font-size: 0.9rem;
+    font-family: "Sora Semibold";
+    color: ${props => props.theme.textPrimary};
+`
+
+const ProductCategory = styled.p`
+    font-size: 0.7rem;
+    color: ${props => props.theme.textPrimary};
+    background: ${props => props.theme.bgPrimary};
+    padding: 0.4rem;
+    width: fit-content;
+    border-radius: 15px;
+    border: 1px solid ${props => props.theme.textPrimary};
 `
 
 
 const ProductCard = ({item}) => {
-    const [cart, setCart] = useState([]);
-    const [showAlert, setShowAlert] = useState(false);
+    // const [carts, setCart] = useState([]);
     const dispatch = useDispatch()
-    const addToCart = (product,id) => {
+    const addToCart = (id) => {
         dispatch(addCart(id))
-        const existingProduct = cart.find(item => item.id === product.id);
-        if(existingProduct) {
-            // setSelectedProduct(product);
-            setShowAlert(true);
-        }
+
     }
     return(
         <Card onClick={() => addToCart(item.id)}>
             <CardImg src={item.image} alt={item.name}/>
-            <NamePrice>
-                <p>{item.name}</p>
-                <p>{item.price}</p>
-            </NamePrice>
+            <ProductNameContainer>
+                <ProductCategory>{item.category}</ProductCategory>
+                <ProductName>{item.name}</ProductName>
+                <ProductPrice>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(item.price)}</ProductPrice>
+            </ProductNameContainer>
         </Card>
     )
 }

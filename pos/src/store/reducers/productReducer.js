@@ -2,12 +2,24 @@ import { products } from "../../utils/data";
 
 const initialState = {
     products: products,
+    filteredProducts: products,
     carts: []
 }
-
+console.log(products.filteredProducts)
 const productReducer = (state = initialState, action) => {
     const {type, payload} = action
     switch(type) {
+        case "FILTER_PRODUCTS":
+            let filtered = products;
+            if(payload.category) {
+                filtered = filtered.filter(
+                    (product) => product.category === payload.category
+                );            
+            }
+            return {
+                ...state,
+                filteredProducts: filtered
+            }
         case "ADD_TO_CART":
             const itemInCart = state.carts.find(item => item.id === payload)
             const newItemCart = state.products.find(item => item.id === payload)
@@ -17,6 +29,7 @@ const productReducer = (state = initialState, action) => {
                     carts: [...state.carts, newItemCart]
                 }
             } else {
+                alert("Item already in cart");
                 return state;
             }
         case "INCREMENT":

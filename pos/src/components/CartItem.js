@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Counter from "./Counter";
 import { inc,dec,removeFromCart } from "../store/actions/product";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 const Cart = styled.div`
     display: flex;
-    width: 95%;
     justify-content: space-between;
     align-items: center;
     height: 3rem;
-    padding: 0 0.3rem;
-    margin: 0.5rem auto;
+
     background: #fff;
-    box-shadow: 1px 1px 10px 1px #ccc;
+`
+const CartContainer = styled.div`
+    display:flex;
+    flex-direction: column;
 `
 const CounterContainer = styled.div`
     display: flex;
@@ -24,16 +25,15 @@ const CounterTotal = styled.div`
 `
 const ItemName = styled.div`
     width: 40%;
-    padding-left: 0.5rem;
 `
 
 const Price = styled.div`
-    width: 30%;
     text-align: center;
 `
 
 const CartItem = ({item}) => {
     const [count, setCount] = useState(1)
+    const carts = useSelector(state => state.products.carts)
     const dispatch = useDispatch()
     const increment = id => {
         setCount(count + 1)
@@ -49,6 +49,8 @@ const CartItem = ({item}) => {
         }
     }
     return(
+        <CartContainer>
+            <h4>Item yang Dipilih {carts ? ` (${carts.length}) item(s)` : ` (0)`}</h4>
         <Cart>
             <ItemName>
                 {item.name}
@@ -62,6 +64,7 @@ const CartItem = ({item}) => {
                 {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(item.price)}
             </Price>
         </Cart>
+        </CartContainer>
     )
 }
 
